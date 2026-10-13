@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Schools | Pakistan's First AI School</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+
+    /* Top Bar */
+    .top-bar {
+      background: #fef3c7;
+      color: #92400e;
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* Header */
+    header {
+      background: #065f46;
+      color: white;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-area img {
+      height: 48px;
+      border-radius: 8px;
+      background: white;
+      padding: 3px;
+    }
+    .logo-text h1 {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+    .logo-text p {
+      font-size: 12px;
+      opacity: 0.9;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+    nav a:hover {
+      background: rgba(255,255,255,0.18);
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #064e3b 0%, #065f46 40%, #047857 100%);
+      color: white;
+      padding: 60px 20px 80px;
+      text-align: center;
+      position: relative;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: #fbbf24;
+      color: #1c1917;
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+    .hero h2 {
+      font-size: clamp(36px, 7vw, 64px);
+      font-weight: 800;
+      margin-bottom: 16px;
+      color: #fbbf24;
+    }
+    .hero p {
+      max-width: 720px;
+      margin: 0 auto 28px;
+      font-size: 17px;
+      opacity: 0.95;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 13px 26px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      transition: 0.25s;
+    }
+    .btn-gold {
+      background: #fbbf24;
+      color: #1c1917;
+    }
+    .btn-gold:hover {
+      background: #f59e0b;
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255,255,255,0.4);
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.12);
+    }
+
+    /* Sections */
+    .section {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+    .section h2 {
+      text-align: center;
+      color: #065f46;
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+    .section-sub {
+      text-align: center;
+      color: #64748b;
+      max-width: 600px;
+      margin: 0 auto 36px;
+    }
+
+    /* Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+    }
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(6,95,70,0.08);
+      border: 1px solid rgba(6,95,70,0.08);
+      transition: 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(6,95,70,0.12);
+    }
+    .card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 14px;
+    }
+    .card h3 {
+      color: #065f46;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+    .card p {
+      color: #475569;
+      font-size: 14px;
+    }
+    .price {
+      display: inline-block;
+      margin-top: 12px;
+      background: #ecfdf5;
+      color: #065f46;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+    }
+
+    /* Campus */
+    .campus-badge {
+      display: inline-block;
+      background: #fef3c7;
+      color: #b45309;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+
+    /* Contact Grid */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .contact-box {
+      background: #ecfdf5;
+      border-radius: 14px;
+      padding: 18px;
+      border: 1px solid #a7f3d0;
+    }
+    .contact-box strong {
+      display: block;
+      color: #065f46;
+      margin-bottom: 4px;
+    }
+
+    /* CTA */
+    .cta {
+      background: linear-gradient(135deg, #065f46, #047857);
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    .cta h2 {
+      color: white;
+      margin-bottom: 12px;
+    }
+    .cta p {
+      margin-bottom: 22px;
+      opacity: 0.95;
+    }
+
+    /* Footer */
+    footer {
+      background: #064e3b;
+      color: white;
+      text-align: center;
+      padding: 28px 20px;
+    }
+    footer a {
+      color: #fbbf24;
+      text-decoration: none;
+    }
+
+    /* WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #25d366;
+      color: white;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+      text-decoration: none;
+      z-index: 999;
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 10px 14px; }
+      nav a { padding: 6px 9px; font-size: 12px; }
+      .hero { padding: 40px 16px 60px; }
+      .logo-text h1 { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    Admissions Open • PSRA Registered • Affiliated with BISE Kohat • Email: info@aischools.pk
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo-area">
+      <img src="logo.png" alt="AI Schools Logo" onerror="this.style.display='none'">
+      <div class="logo-text">
+        <h1>AI Schools</h1>
+        <p>Pakistan's First AI School</p>
+      </div>
+    </div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#campuses">Campuses</a>
+      <a href="#courses">IT Courses</a>
+      <a href="#admission">Admission</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-badge">Pakistan’s First AI School</div>
+    <h2>AI Schools</h2>
+    <p>Pakistan’s First AI School — building confident learners through modern education, strong values, creativity, and future-ready school experiences across our campuses.</p>
+    <div class="hero-btns">
+      <a href="#courses" class="btn btn-gold">Explore Programs</a>
+      <a href="#admission" class="btn btn-outline">Apply Now</a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section" id="about">
+    <h2>Why AI Schools?</h2>
+    <p class="section-sub">We aim to educate, inspire, and build confident, successful, and responsible individuals.</p>
+    <div class="cards">
+      <div class="card">
+        <img src="building.jpg" alt="Quality Education" onerror="this.style.display='none'">
+        <h3>Quality Education</h3>
+        <p>Strong academic support from early years to secondary level with modern teaching methods.</p>
+      </div>
+      <div class="card">
+        <img src="ceo.jpg" alt="Confidence" onerror="this.style.display='none'">
+        <h3>Confidence Building</h3>
+        <p>Helping students grow into capable, expressive, and self-assured learners.</p>
+      </div>
+      <div class="card">
+        <img src="executive-director.jpg" alt="Future" onerror="this.style.display='none'">
+        <h3>Future Vision</h3>
+        <p>Encouraging modern skills, AI exposure, problem solving, and real-world learning.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Campuses -->
+  <section class="section" id="campuses" style="background:#f1f5f9;">
+    <h2>Our Campuses</h2>
+    <p class="section-sub">Three modern campuses serving students across the region.</p>
+    <div class="cards">
+      <div class="card">
+        <span class="campus-badge">Campus 1</span>
+        <h3>Kohsar Campus</h3>
+        <p>Latamber, Karak<br>Timings: 07:30 AM – 12:30 PM<br>Cell: 0345-9652393</p>
+      </div>
+      <div class="card">
+        <span class="campus-badge">Campus 2</span>
+        <h3>KDA Campus</h3>
+        <p>KDA, Kohat<br>Timings: 07:30 AM – 01:00 PM<br>Cell: 0332-9595117</p>
+      </div>
+      <div class="card">
+        <span class="campus-badge">Campus 3</span>
+        <h3>Habiba Campus</h3>
+        <p>Ghari Behram Khan, Kohat<br>Timings: 07:30 AM – 01:00 PM<br>Cell: 0335-1566014</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- IT Courses -->
+  <section class="section" id="courses">
+    <h2>IT Courses & Fees</h2>
+    <p class="section-sub">Future-ready technology programs designed for students of all levels.</p>
+    <div class="cards">
+      <div class="card">
+        <img src="building.jpg" alt="Basic Computer" onerror="this.style.display='none'">
+        <h3>Basic Computer Skills</h3>
+        <p>MS Office, Internet, Email, Typing & File Management.</p>
+        <div class="price">Fee: Rs. 2,500 / month</div>
+      </div>
+      <div class="card">
+        <img src="ceo.jpg" alt="Web Development" onerror="this.style.display='none'">
+        <h3>Web Development</h3>
+        <p>HTML, CSS, JavaScript & Responsive Website Building.</p>
+        <div class="price">Fee: Rs. 4,000 / month</div>
+      </div>
+      <div class="card">
+        <img src="executive-director.jpg" alt="AI Python" onerror="this.style.display='none'">
+        <h3>AI & Python Basics</h3>
+        <p>Python programming + Introduction to Artificial Intelligence.</p>
+        <div class="price">Fee: Rs. 5,000 / month</div>
+      </div>
+      <div class="card">
+        <img src="chairman.jpg" alt="Graphic Design" onerror="this.style.display='none'">
+        <h3>Graphic Designing</h3>
+        <p>Canva, Photoshop Basics, Logo & Social Media Design.</p>
+        <div class="price">Fee: Rs. 3,500 / month</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admission -->
+  <section class="section" id="admission">
+    <h2>Admissions Open</h2>
+    <p class="section-sub">Nursery to Class 10 — Limited seats available</p>
+    <div class="card" style="max-width:600px; margin:0 auto; text-align:center;">
+      <p><strong>Classes:</strong> Nursery to Class 10</p>
+      <p><strong>Timing:</strong> Monday to Friday, 07:30 AM – 12:30 PM</p>
+      <p><strong>Phone:</strong> 0345-9652393 / 0334-8686393</p>
+      <p><strong>Email:</strong> admission@aischools.pk</p>
+      <br>
+      <a href="https://wa.me/923459652393" class="btn btn-gold" target="_blank">WhatsApp for Admission</a>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section" id="contact" style="background:#f1f5f9;">
+    <h2>Contact Us</h2>
+    <div class="contact-grid">
+      <div class="contact-box">
+        <strong>General Information</strong>
+        info@aischools.pk
+      </div>
+      <div class="contact-box">
+        <strong>Principal Office</strong>
+        principal@aischools.pk
+      </div>
+      <div class="contact-box">
+        <strong>Admissions Desk</strong>
+        admission@aischools.pk
+      </div>
+      <div class="contact-box">
+        <strong>KDA Campus</strong>
+        kda@aischools.pk
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Ready to Join AI Schools?</h2>
+    <p>Contact us today for admission guidance and campus visit.</p>
+    <a href="https://wa.me/923459652393" class="btn btn-gold" target="_blank">Chat on WhatsApp</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 AI Schools — Pakistan’s First AI School. All Rights Reserved.</p>
+    <p style="margin-top:8px;">
+      <a href="mailto:info@aischools.pk">info@aischools.pk</a> • 
+      <a href="mailto:admission@aischools.pk">admission@aischools.pk</a>
+    </p>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/923459652393" class="whatsapp-float" target="_blank">💬</a>
+
+</body>
+</html>
